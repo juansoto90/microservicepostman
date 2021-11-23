@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "072851aa-03f6-488e-963b-f3a8ee0b8393",
+		"name": "Bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "CUSTOMER_FINDBYNAME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/customer/name/Pedro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"customer",
+								"name",
+								"Pedro"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "001",
+							"customerIdNumber": "00124",
+							"name": "Pedro",
+							"email": "pedro@gmail.com",
+							"phone": "987412365",
+							"address": "Av Lima 320",
+							"customerType": {
+								"id": "1",
+								"type": "personal"
+							}
+						}
+					]
+				},
+				{
+					"name": "CUSTOMER_FINDBYCUSTOMERIDNUMBER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/customer/number/00124",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"customer",
+								"number",
+								"00124"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "001",
+							"customerIdNumber": "00124",
+							"name": "Pedro",
+							"email": "pedro@gmail.com",
+							"phone": "987412365",
+							"address": "Av Lima 320",
+							"customerType": {
+								"id": "1",
+								"type": "personal"
+							}
+						}
+					]
+				},
+				{
+					"name": "CUSTOMER_SAVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"001\",\r\n    \"customerIdNumber\" : \"00124\",\r\n    \"name\" : \"Pedro\",\r\n    \"email\" : \"pedro@gmail.com\",\r\n    \"phone\" : \"987412365\",\r\n    \"address\" : \"Av Lima 320\",\r\n    \"customerType\": {\r\n        \"id\" : \"1\",\r\n        \"type\" : \"personal\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8092/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "001",
+							"customerIdNumber": "00124",
+							"name": "Pedro",
+							"email": "pedro@gmail.com",
+							"phone": "987412365",
+							"address": "Av Lima 320",
+							"customerType": {
+								"id": "1",
+								"type": "personal"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "PRODUCT_FINDBYID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/product/0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"product",
+								"0001"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0001",
+							"productName": "Cuenta Ahorro",
+							"productType": {
+								"id": "T001",
+								"type": "pasivo"
+							},
+							"productRule": {
+								"customerOwner": [
+									"Jose Perez",
+									"Mario Gonzales"
+								],
+								"commission": false,
+								"movements": true,
+								"quantityMaximumMovementsMonthly": 100,
+								"maximumLimitCredit": 0.0
+							}
+						}
+					]
+				},
+				{
+					"name": "PRODUCT_PASSIVE_FINDBYID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/product/passive/001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"product",
+								"passive",
+								"001"
+							]
+						}
+					},
+					"response": [
+						{
+							"productName": "CUENTA_AHORRO",
+							"productType": "PASIVO",
+							"id": "001",
+							"maintenanceCommission": false,
+							"maximumMovementLimit": false,
+							"movementAmount": 40,
+							"maximumPersonalAccount": 1,
+							"maximumEnterpriseAccount": 1,
+							"minimumHeadlines": 1,
+							"minimumAuthorizedSigners": 0,
+							"personal": true,
+							"enterprise": false
+						}
+					]
+				},
+				{
+					"name": "PRODUCT_SAVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"0001\",\r\n    \"productName\" : \"Cuenta Ahorro\",\r\n    \"productType\" : {\r\n        \"id\" : \"T001\",\r\n        \"type\" : \"pasivo\"\r\n    } ,\r\n    \"productRule\" : {\r\n        \"customerOwner\" : [\r\n            \"Jose Perez\",\r\n            \"Mario Gonzales\"\r\n        ],\r\n        \"commission\" : false,\r\n        \"movements\" : true,\r\n        \"quantityMaximumMovementsMonthly\" : 100,\r\n        \"maximumLimitCredit\" : 0.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0001",
+							"productName": "Cuenta Ahorro",
+							"productType": {
+								"id": "T001",
+								"type": "pasivo"
+							},
+							"productRule": {
+								"customerOwner": [
+									"Jose Perez",
+									"Mario Gonzales"
+								],
+								"commission": false,
+								"movements": true,
+								"quantityMaximumMovementsMonthly": 100,
+								"maximumLimitCredit": 0.0
+							}
+						}
+					]
+				},
+				{
+					"name": "PRODUCT_PASSIVE_SAVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"001\",\r\n    \"productName\" : \"CUENTA_AHORRO\",\r\n    \"productType\" : \"PASIVO\",\r\n    \"isPersonal\" : true,\r\n    \"isEnterprise\" : false,\r\n    \"maintenanceCommission\" : false,\r\n    \"maximumMovementLimit\" : false,\r\n    \"movementAmount\" : 50,\r\n    \"maximumPersonalAccount\" : 1,\r\n    \"maximumEnterpriseAccount\" : 1,\r\n    \"minimumHeadlines\" : 1, \r\n    \"minimumAuthorizedSigners\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/product/passive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"product",
+								"passive"
+							]
+						}
+					},
+					"response": [
+						{
+							"productName": "CUENTA_AHORRO",
+							"productType": "PASIVO",
+							"id": "001",
+							"maintenanceCommission": false,
+							"maximumMovementLimit": false,
+							"movementAmount": 50,
+							"maximumPersonalAccount": 1,
+							"maximumEnterpriseAccount": 1,
+							"minimumHeadlines": 1,
+							"minimumAuthorizedSigners": 0,
+							"personal": true,
+							"enterprise": false
+						}
+					]
+				},
+				{
+					"name": "PRODUCT_PASSIVE_UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"001\",\r\n    \"productName\" : \"CUENTA_AHORRO\",\r\n    \"productType\" : \"PASIVO\",\r\n    \"personal\" : true,\r\n    \"enterprise\" : false,\r\n    \"maintenanceCommission\" : false,\r\n    \"maximumMovementLimit\" : false,\r\n    \"movementAmount\" : 50,\r\n    \"maximumPersonalAccount\" : 1,\r\n    \"maximumEnterpriseAccount\" : 1,\r\n    \"minimumHeadlines\" : 1, \r\n    \"minimumAuthorizedSigners\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/product/passive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"product",
+								"passive"
+							]
+						}
+					},
+					"response": [
+						{
+							"productName": "CUENTA_AHORRO",
+							"productType": "PASIVO",
+							"id": "001",
+							"maintenanceCommission": false,
+							"maximumMovementLimit": false,
+							"movementAmount": 40,
+							"maximumPersonalAccount": 1,
+							"maximumEnterpriseAccount": 1,
+							"minimumHeadlines": 1,
+							"minimumAuthorizedSigners": 0,
+							"personal": true,
+							"enterprise": false
+						}
+					]
+				}
+			]
+		}
+	]
+}
